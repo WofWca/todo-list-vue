@@ -14,17 +14,18 @@ const emit = defineEmits([
   'editRequested',
   'deleteSelfRequested',
   'deleteSubtaskRequested',
+  'update:itemDone',
 ]);
 </script>
 
 <template>
   <li>
     <section class="item-line">
-      <!-- TODO don't mutate props directly - emit an event instead. -->
       <input
         type="checkbox"
         aria-label="Done"
-        v-model="todoItem.done"
+        :checked="todoItem.done"
+        @change="e => emit('update:itemDone', todoItem, e.target.checked)"
       />
       <span>{{ todoItem.text }}</span>
       <div class="spacer" />
@@ -50,6 +51,7 @@ const emit = defineEmits([
         @editRequested="item => emit('editRequested', item)"
         @deleteSelfRequested="() => emit('deleteSubtaskRequested', todoItem, ind)"
         @deleteSubtaskRequested="(parent, ind) => emit('deleteSubtaskRequested', parent, ind)"
+        @update:itemDone="(item, newVal) => emit('update:itemDone', item, newVal)"
       />
     </ol>
   </li>

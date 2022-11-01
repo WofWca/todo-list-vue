@@ -64,6 +64,7 @@ watch(
         insertIn: parent.subtasks,
         insertAt: parent.subtasks.length,
       }"
+      @update:itemDone="(item, newVal) => item.done = newVal"
     />
   </ol>
 
