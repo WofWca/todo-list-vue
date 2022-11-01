@@ -95,6 +95,7 @@ function onFormSubmit(e) {
     }"
   >
     <form method="dialog">
+      <p>Discard changes?</p>
       <button>Continue editing</button>
       <button
         value="discard"
