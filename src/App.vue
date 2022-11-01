@@ -86,6 +86,7 @@ watch(
     @close="state.editingDialogItem = null"
   />
 
+  <!-- TODO make sure focus behaves well when deleting items. -->
   <TheDeleteDialog
     v-if="state.deletingDialogData"
     @confirm="state.deletingDialogData.arr.splice(state.deletingDialogData.ind, 1)"
